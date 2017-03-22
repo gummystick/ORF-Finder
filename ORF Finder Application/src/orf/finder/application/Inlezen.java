@@ -10,5 +10,6 @@ package orf.finder.application;
  * @author William
  */
 public class Inlezen {
+    private String test;
     
 }
