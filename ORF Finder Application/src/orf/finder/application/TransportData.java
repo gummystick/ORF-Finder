@@ -7,7 +7,7 @@ package orf.finder.application;
 
 /**
  *
- * @author William
+ * @author William hdhhdh
  */
 public class TransportData {
     
