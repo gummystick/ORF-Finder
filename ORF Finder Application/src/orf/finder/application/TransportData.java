@@ -10,21 +10,41 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @Ruben Vermaas
+ * @Ruben vermaas
  */
 public class TransportData {
-
     
-    public static Connection connect() {
+    private Statement st;
+    private ResultSet rs;
+    private Connection con;
+    
+      
+    public void connect() {
     try{
         Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE");
-        return con;
-    
+        
+        con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE");
+        st = con.createStatement();
     } 
     catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);
+        }
     }
-    return null;
+     
+    public void getData(){
+        try{
+            String query = "Select * from ORFFINDER";
+            rs = st.executeQuery(query);
+            System.out.println("Resultaten: ");
+            while(rs.next()){
+                String header = rs.getString("HEADER");
+                String object = rs.getString("OBJECT");
+                System.out.println("header: " + header);
+                System.out.println("object: " + object);
+            }
+            
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
     }
 }
