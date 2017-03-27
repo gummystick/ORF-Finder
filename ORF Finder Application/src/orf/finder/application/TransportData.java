@@ -5,10 +5,26 @@
  */
 package orf.finder.application;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author William hdhhdh
+ * @Ruben Vermaas
  */
 public class TransportData {
+
     
+    public static Connection connect() {
+    try{
+        Class.forName("oracle.jdbc.OracleDriver");
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE");
+        return con;
+    
+    } 
+    catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+    return null;
+    }
 }
