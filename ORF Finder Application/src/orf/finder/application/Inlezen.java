@@ -8,16 +8,19 @@ package orf.finder.application;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author William
+ * @author Lisanne
  */
 public class Inlezen {
     
-    public void readFile() {
-        
+    
+
+    public static void readFile() {
+        ArrayList<String> header = new ArrayList<>();
         BufferedReader br = null;
         String path = "C:\\Users\\User\\Documents\\Course 7\\Weektaken\\Debaryomyces_occidentalis.fas";
         try {
@@ -26,8 +29,12 @@ public class Inlezen {
             
             String line;
             while ((line = br.readLine()) != null) {
-               
+                if (line.startsWith(">")){
+                    header.add(line);
+                }
+                    
             }
+            System.out.println(header);
             br.close();
         
         } catch (IOException ioe) {
@@ -40,4 +47,8 @@ public class Inlezen {
         catch (Exception ex) {
             System.out.println("Onbekende fout: raadpleeg uw systeembeheerder");} 
     }
+    public static void main(String[] args) {
+        readFile();
+    }
+
 }
