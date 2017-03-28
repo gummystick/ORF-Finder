@@ -21,22 +21,43 @@ public class Inlezen {
 
     public static void readFile() {
         ArrayList<String> header = new ArrayList<>();
+        ArrayList<String> sequentie = new ArrayList<>();
+        ArrayList<ArrayList> sequentieInfo = new ArrayList<>();
+        int count =-1;
+        
         BufferedReader br = null;
-        String path = "C:\\Users\\User\\Documents\\Course 7\\Weektaken\\Debaryomyces_occidentalis.fas";
+        String path = "C:\\Users\\User\\Documents\\Course 7\\Weektaken\\1.fasta";
         try {
             br = new BufferedReader(new FileReader(path));
-            br.readLine();
             
             String line;
             while ((line = br.readLine()) != null) {
+                count++;
                 if (line.startsWith(">")){
                     header.add(line);
                 }
+                else if (count==1){
+                    sequentie.add(line);
+                   
+                    
+                }
+                else if (count>1){
+                    String seq = sequentie.get(0);
+                    String newseq = seq+line;
+                    sequentie.set(0, newseq);
+                    
+                }
+               
                     
             }
-            System.out.println(header);
+            
+            sequentieInfo.add(header);
+            sequentieInfo.add(sequentie);     
+            
+            System.out.println(sequentieInfo);
+            
             br.close();
-        
+            
         } catch (IOException ioe) {
          JOptionPane.showMessageDialog(null,
                     "File Error: " + ioe.toString());
@@ -44,8 +65,8 @@ public class Inlezen {
         catch (NullPointerException np){
             System.out.println("Er is een fout opgetreden");
         }
-        catch (Exception ex) {
-            System.out.println("Onbekende fout: raadpleeg uw systeembeheerder");} 
+//        catch (Exception ex) {
+//            System.out.println("Onbekende fout: raadpleeg uw systeembeheerder");} 
     }
     public static void main(String[] args) {
         readFile();
