@@ -7,6 +7,7 @@ package orf.finder.application;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
+import com.mysql.jdbc.Driver;
 
 /**
  *
@@ -18,22 +19,28 @@ public class TransportData {
     private ResultSet rs;
     private Connection con;
     
+    String username = "SYSTEM";
+    String password = "projectgroep6";
+    
       
-    public void connect() {
+    public void connectdb() {
+    
+        System.out.println("Testeing connection......");    
     try{
         Class.forName("oracle.jdbc.OracleDriver");
         
-        con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE");
+        con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE",username,password);
         st = con.createStatement();
     } 
     catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);
         }
+        System.out.println("Connection succesfull!");
     }
      
     public void getData(){
         try{
-            String query = "Select * from ORFFINDER";
+            String query = "SELECT * FROM ORFFINDER WHERE ROWNUM <= 100";
             rs = st.executeQuery(query);
             System.out.println("Resultaten: ");
             while(rs.next()){
@@ -44,7 +51,7 @@ public class TransportData {
             }
             
         }catch(Exception ex){
-            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,ex);
         }
     }
 }
