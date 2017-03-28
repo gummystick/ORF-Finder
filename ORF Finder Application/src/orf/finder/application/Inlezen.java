@@ -65,8 +65,8 @@ public class Inlezen {
         catch (NullPointerException np){
             System.out.println("Er is een fout opgetreden");
         }
-//        catch (Exception ex) {
-//            System.out.println("Onbekende fout: raadpleeg uw systeembeheerder");} 
+        catch (Exception ex) {
+            System.out.println("Onbekende fout: raadpleeg uw systeembeheerder");} 
     }
     public static void main(String[] args) {
         readFile();
