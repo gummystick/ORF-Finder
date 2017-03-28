@@ -18,8 +18,9 @@ public class ORFObject {
     protected String test;
 
     
-    public ORFObject(){
-        
+    public ORFObject(String orfHeader, String sequentie){
+        dnaSequence = sequentie;
+        orfID = orfHeader;
     }
     
     private void setDnaSequence(String sequence){
@@ -30,6 +31,9 @@ public class ORFObject {
         return dnaSequence;
     }
     
+    private void setPositie(long locatie){
+        positie = locatie;
+    }
     private long getPositie(){
         return positie;
     }
