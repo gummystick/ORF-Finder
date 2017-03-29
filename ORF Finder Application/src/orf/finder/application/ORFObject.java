@@ -10,7 +10,7 @@ package orf.finder.application;
  * @author William
  */
 public class ORFObject {
-    
+
     protected String orfID;
     protected String dnaSequence;
     protected long positie;//could be another kind of variable, depending on the position notation
@@ -42,3 +42,4 @@ public class ORFObject {
         return percentageGC;
     }
 }
+
