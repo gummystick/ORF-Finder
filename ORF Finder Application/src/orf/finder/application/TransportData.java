@@ -45,13 +45,17 @@ public class TransportData {
             System.out.println("Resultaten: ");
             while(rs.next()){
                 String header = rs.getString("HEADER");
-                String object = rs.getString("OBJECT");
+                String orfid = rs.getString("ORFID");
                 System.out.println("header: " + header);
-                System.out.println("object: " + object);
+                System.out.println("orfid: " + orfid);
             }
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null,ex);
         }
+    }
+    
+    public void setData(){
+        
     }
 }
