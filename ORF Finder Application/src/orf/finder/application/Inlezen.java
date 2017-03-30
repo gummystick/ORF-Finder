@@ -6,6 +6,7 @@
 package orf.finder.application;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,18 +18,24 @@ import javax.swing.JOptionPane;
  */
 public class Inlezen {
     
+    private String filePath;
+    private ArrayList<ArrayList> sequentieInfo = new ArrayList<>();
     
-
-    public static void readFile() {
+    public Inlezen(String path){
+        filePath = path;
+    }
+    
+    public ArrayList<ArrayList> getSequentieInfo(){
+        return sequentieInfo;
+    }
+    public void readFile() {
         ArrayList<String> header = new ArrayList<>();
         ArrayList<String> sequentie = new ArrayList<>();
-        ArrayList<ArrayList> sequentieInfo = new ArrayList<>();
         int count =-1;
         
         BufferedReader br = null;
-        String path = "C:\\Users\\User\\Documents\\Course 7\\Weektaken\\1.fasta";
         try {
-            br = new BufferedReader(new FileReader(path));
+            br = new BufferedReader(new FileReader(filePath));
             
             String line;
             while ((line = br.readLine()) != null) {
@@ -67,9 +74,6 @@ public class Inlezen {
         }
         catch (Exception ex) {
             System.out.println("Onbekende fout: raadpleeg uw systeembeheerder");} 
-    }
-    public static void main(String[] args) {
-        readFile();
     }
 
 }
