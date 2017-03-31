@@ -63,13 +63,17 @@ public class TransportData {
     public void setData(){
         
         try{
-            String sql = "Insert into ORFFINDER (HEADER, ORFID, DNASEQUENTIE, POSITIE, PERCENTAGEGC) Value (?,?,?,?,?) ";
-            st2 = con2.prepareStatement(sql);
-            //st2.setString(1, value.get )
-            //st2.execute(String);
+            String sql = "INSERT INTO ORF (ORF_ID, READING_FRAME, START_CODON, STOP_CODON)" + "VALUES (?,?,?,?)";
             
             
+            PreparedStatement st2 = con2.prepareStatement(sql);
             
+            st2.setString(1,"1235");
+            st2.setString(2,"Test1");
+            st2.setString(3,"Test2");
+            st2.setString(4,"Test3");
+            
+            st2.execute();          
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex);
