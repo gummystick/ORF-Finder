@@ -45,13 +45,15 @@ public class TransportData {
      
     public void getData(){
         try{
-            String query = "SELECT * FROM ORFFINDER WHERE ROWNUM <= 100";
+            String query = "SELECT * FROM ORF WHERE ROWNUM <= 100";
             rs = st.executeQuery(query);
             System.out.println("Resultaten: ");
             while(rs.next()){
-                String header = rs.getString("HEADER");
-                String orfid = rs.getString("ORFID");
-                System.out.println("header: " + header);
+                String orfid = rs.getString("ORF_ID");
+                String readingframe = rs.getString("READING_FRAME");
+                String startcodon = rs.getString("START_CODON");
+                String stopcodon = rs.getString("STOP_CODON");
+                System.out.println("readingframe: " + readingframe );
                 System.out.println("orfid: " + orfid);
             }
             

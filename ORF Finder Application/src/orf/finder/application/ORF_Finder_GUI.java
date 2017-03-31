@@ -171,6 +171,7 @@ public class ORF_Finder_GUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Open.connectdb();
+        Open.setData();
         Open.getData();
         
     }//GEN-LAST:event_jButton1ActionPerformed
