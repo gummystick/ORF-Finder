@@ -67,6 +67,7 @@ public class TransportData {
         try{
             String sql = "INSERT INTO ORF (ORF_ID, READING_FRAME, START_CODON, STOP_CODON)" + "VALUES (?,?,?,?)";
             
+            con2 = DriverManager.getConnection("jdbc:oracle:thin:@cytosine.nl:1521:XE",username,password);
             
             PreparedStatement st2 = con2.prepareStatement(sql);
             
