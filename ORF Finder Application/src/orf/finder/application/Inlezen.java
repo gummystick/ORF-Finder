@@ -61,10 +61,10 @@ public class Inlezen {
             sequentieInfo.add(header);
             sequentieInfo.add(sequentie);     
             
-            System.out.println(sequentieInfo);
+          //  System.out.println(sequentieInfo);
             
             br.close();
-            
+            Verwerken.verwerk(sequentieInfo);
         } catch (IOException ioe) {
          JOptionPane.showMessageDialog(null,
                     "File Error: " + ioe.toString());
